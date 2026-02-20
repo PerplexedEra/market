@@ -13,21 +13,17 @@ export function Portfolio() {
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="portfolio" ref={sectionRef} className="section-light relative">
-      <div className="gradient-mesh" />
-      <div className="grid-overlay" />
-      <div className="section-divider" />
-
+    <section id="portfolio" ref={sectionRef} className="section-white relative">
       <div className="container-premium relative">
         <div className="text-center max-w-2xl mx-auto" data-reveal>
           <p className="eyebrow">{t.portfolio.eyebrow}</p>
-          <h2 className="headline mt-3 text-3xl font-bold sm:text-4xl lg:text-5xl">
+          <h2 className="headline mt-4 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold font-sans">
             {t.portfolio.headline}
           </h2>
-          <p className="subhead mt-4 mx-auto">{t.portfolio.subhead}</p>
+          <p className="subhead mt-6 mx-auto font-serif italic">{t.portfolio.subhead}</p>
         </div>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+        <div className="mt-20 grid gap-10 lg:grid-cols-3">
           {t.portfolio.items.map((item: {
             readonly title: string;
             readonly description: string;
@@ -35,41 +31,56 @@ export function Portfolio() {
             readonly metric: string;
             readonly metricDetail: string;
           }, i: number) => (
-            <div key={item.title} data-reveal className="glass-card group overflow-hidden">
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-[4/3]">
-                <img
-                  src={IMAGES[i]}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-transparent opacity-80" />
+            <div key={item.title} data-reveal className="card-advanced group">
+              <div className="card-inner overflow-hidden p-0 flex flex-col h-full">
 
-                {/* Metric badge */}
-                <div className="absolute top-4 right-4 metric-badge flex items-center gap-1.5">
-                  <TrendingUp className="h-3 w-3" />
-                  {item.metric}
-                </div>
+                {/* Image & Metric */}
+                <div className="relative overflow-hidden aspect-[4/3] bg-brand-sand">
+                  <img
+                    src={IMAGES[i]}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply"
+                    loading="lazy"
+                  />
+                  {/* Subtle vignette rather than heavy dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-eggplant/50 via-transparent to-transparent opacity-60" />
 
-                {/* Hover reveal icon */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-12 w-12 rounded-full bg-[#00d4ff]/20 backdrop-blur flex items-center justify-center">
-                    <ArrowUpRight className="h-5 w-5 text-[#00d4ff]" />
+                  {/* High-contrast Metric Badge */}
+                  <div className="absolute top-4 right-4 inline-flex items-center gap-2 rounded-full bg-brand-magenta px-4 py-2 font-sans text-xs font-bold text-white shadow-lg">
+                    <TrendingUp className="h-4 w-4" />
+                    {item.metric}
+                  </div>
+
+                  {/* Hover reveal icon - Yellow pill */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="h-14 w-14 rounded-full bg-brand-yellow flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform duration-500">
+                      <ArrowUpRight className="h-6 w-6 text-brand-eggplant" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-base font-semibold text-white">{item.title}</h3>
-                <p className="mt-1 text-sm text-white/40">{item.description}</p>
-                <p className="mt-1 text-xs text-[#06d6a0]">{item.metricDetail}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {item.tags.map((tag: string) => (
-                    <span key={tag} className="pill">{tag}</span>
-                  ))}
+                {/* Content */}
+                <div className="p-8 pb-10 flex-1 flex flex-col">
+                  <h3 className="font-sans text-2xl font-extrabold text-brand-eggplant leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 font-serif text-base text-brand-eggplant/70 flex-1">
+                    {item.description}
+                  </p>
+
+                  <div className="mt-4 pb-4 border-b border-brand-eggplant/10">
+                    <p className="font-sans text-xs font-bold uppercase tracking-widest text-brand-magenta">
+                      Result: <span className="text-brand-eggplant/60">{item.metricDetail}</span>
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {item.tags.map((tag: string) => (
+                      <span key={tag} className="pill">{tag}</span>
+                    ))}
+                  </div>
                 </div>
+
               </div>
             </div>
           ))}

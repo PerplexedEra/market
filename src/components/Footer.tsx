@@ -1,123 +1,79 @@
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Twitter, Linkedin, Instagram } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const quickLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Case Studies", href: "#portfolio" },
-  { name: "Insights", href: "#blog" },
-  { name: "Contact", href: "#contact" },
-];
-
-const services = [
-  { name: "Websites & Landing Pages", href: "#services" },
-  { name: "App Development", href: "#services" },
-  { name: "SEO & Growth", href: "#services" },
-  { name: "Brand Strategy", href: "#services" },
-];
-
-const socialLinks = [
-  { name: "Facebook", icon: Facebook, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Instagram", icon: Instagram, href: "#" },
-];
+const LOGO_SRC = "/upmarketlogo.png.png";
 
 export function Footer() {
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const { t } = useLanguage();
 
   return (
-    <footer className="relative bg-[#030308] border-t border-white/[0.04]">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
-
-      <div className="max-w-[1280px] mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
-          {/* Brand */}
-          <div className="space-y-6">
-            <a href="#home" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-[#00d4ff] flex items-center justify-center">
-                <span className="text-white font-bold text-sm">U</span>
-              </div>
-              <span className="text-lg font-semibold text-white">
-                UpMarket<span className="text-[#00d4ff]">.</span>
+    <footer className="relative border-t border-brand-eggplant/5 bg-white pt-24 pb-12">
+      <div className="container-premium relative">
+        <div className="grid gap-16 lg:grid-cols-2">
+          {/* Brand Col */}
+          <div className="max-w-md">
+            <a href="#home" className="flex items-center gap-3 group w-fit">
+              <img src={LOGO_SRC} alt="UpMarket logo" className="h-10 w-10 rounded-xl object-contain" />
+              <span className="font-sans text-2xl font-extrabold tracking-tighter text-brand-eggplant group-hover:text-brand-magenta transition-colors">
+                UpMarket.
               </span>
             </a>
-            <p className="text-white/35 text-sm leading-relaxed">
-              Conversion-focused digital infrastructure for serious brands. Based in Sandton, Johannesburg.
+            <p className="mt-6 font-serif text-lg leading-relaxed text-brand-eggplant/70">
+              {t.footer.description}
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((s) => (
+
+            <div className="mt-8 flex items-center gap-4">
+              {[Twitter, Linkedin, Instagram].map((Icon, i) => (
                 <a
-                  key={s.name}
-                  href={s.href}
-                  className="w-9 h-9 rounded-full border border-white/[0.08] bg-white/[0.03] flex items-center justify-center text-white/35 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff]/30 hover:text-[#00d4ff] transition-all duration-300"
+                  key={i}
+                  href="#"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-sand text-brand-eggplant transition-all hover:-translate-y-1 hover:bg-brand-magenta hover:text-white"
                 >
-                  <s.icon className="w-4 h-4" />
+                  <Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-7 text-sm">Navigation</h3>
-            <ul className="space-y-3.5">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                    className="text-white/35 hover:text-[#00d4ff] text-sm transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links Grid */}
+          <div className="grid gap-8 sm:grid-cols-2">
+            <div>
+              <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-brand-eggplant">{t.footer.services}</h4>
+              <ul className="mt-6 space-y-4">
+                {t.footer.servicesLinks.map((link: string) => (
+                  <li key={link}>
+                    <a href="#" className="font-sans text-base font-medium text-brand-eggplant/70 transition-colors hover:text-brand-magenta">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold mb-7 text-sm">Services</h3>
-            <ul className="space-y-3.5">
-              {services.map((s) => (
-                <li key={s.name}>
-                  <a
-                    href={s.href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(s.href); }}
-                    className="text-white/35 hover:text-[#00d4ff] text-sm transition-colors"
-                  >
-                    {s.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold mb-7 text-sm">Contact</h3>
-            <ul className="space-y-3.5 text-sm">
-              <li className="text-white/35">hello@upmarket.co.za</li>
-              <li className="text-white/35">+27 11 123 4567</li>
-              <li className="text-white/35">Sandton, Johannesburg</li>
-              <li className="text-white/35">Mon-Fri: 9AM-5PM SAST</li>
-            </ul>
+            <div>
+              <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-brand-eggplant">{t.footer.company}</h4>
+              <ul className="mt-6 space-y-4">
+                {t.footer.companyLinks.map((link: string) => (
+                  <li key={link}>
+                    <a href="#" className="font-sans text-base font-medium text-brand-eggplant/70 transition-colors hover:text-brand-magenta">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/25 text-xs">
-            © 2026 UpMarket. All rights reserved.
+        <div className="mt-24 flex flex-col items-center justify-between border-t border-brand-eggplant/5 pt-8 sm:flex-row">
+          <p className="font-sans text-sm font-medium text-brand-eggplant/50">
+            {t.footer.rights.replace('{year}', new Date().getFullYear().toString())}
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-white/25 hover:text-[#00d4ff] text-xs transition-colors">
+          <div className="mt-4 flex gap-6 sm:mt-0">
+            <a href="#" className="font-sans text-sm font-medium text-brand-eggplant/50 hover:text-brand-magenta">
               Privacy Policy
             </a>
-            <a href="#" className="text-white/25 hover:text-[#00d4ff] text-xs transition-colors">
+            <a href="#" className="font-sans text-sm font-medium text-brand-eggplant/50 hover:text-brand-magenta">
               Terms of Service
             </a>
           </div>

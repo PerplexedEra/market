@@ -269,6 +269,12 @@ export const translations = {
 
     footer: {
       note: "UpMarket Digital • Sandton • Serving SA & remote clients",
+      description: "Building digital infrastructure that scales. We transform businesses into category leaders through premium web experiences.",
+      services: "Services",
+      servicesLinks: ["Landing Pages", "Web Applications", "SEO & Growth", "Digital Strategy"],
+      company: "Company",
+      companyLinks: ["About Us", "Case Studies", "Blog", "Contact"],
+      rights: "© {year} UpMarket Digital. All rights reserved."
     },
   },
 

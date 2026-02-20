@@ -1,42 +1,68 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const IMAGES = [
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+];
 
 export function Blog() {
   const { t } = useLanguage();
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="blog" ref={sectionRef} className="section-dark relative">
-      <div className="gradient-mesh" />
-      <div className="grid-overlay" />
-
+    <section id="blog" ref={sectionRef} className="section-white relative">
       <div className="container-premium relative">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal>
-          <div className="max-w-xl">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-20" data-reveal>
+          <div className="max-w-2xl">
             <p className="eyebrow">{t.blog.eyebrow}</p>
-            <h2 className="headline mt-3 text-3xl font-bold sm:text-4xl lg:text-5xl">
+            <h2 className="headline mt-4 text-4xl sm:text-5xl lg:text-[4rem] font-extrabold font-sans">
               {t.blog.headline}
             </h2>
-            <p className="subhead mt-4">{t.blog.subhead}</p>
           </div>
-          <a href="#contact" className="btn-secondary-premium w-fit shrink-0">
-            {t.blog.button} <ArrowRight className="h-4 w-4" />
-          </a>
+          <button className="btn-secondary w-fit shrink-0">
+            View all insights <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {t.blog.posts.map((p: { readonly title: string; readonly date: string; readonly tag: string; readonly excerpt: string }) => (
-            <div key={p.title} data-reveal className="glass-card glow-card p-7 group cursor-pointer">
-              <div className="flex items-center gap-3">
-                <span className="pill">{p.tag}</span>
-                <span className="text-xs text-white/25">{p.date}</span>
+        <div className="grid gap-8 lg:grid-cols-3">
+          {t.blog.posts.map((post: { readonly title: string; readonly excerpt: string; readonly tag: string; readonly date: string }, i: number) => (
+            <article key={post.title} data-reveal className="card-advanced group flex flex-col h-full cursor-pointer">
+              <div className="card-inner p-0 overflow-hidden flex flex-col h-full">
+                <div className="relative aspect-[16/10] overflow-hidden bg-brand-sand">
+                  <img
+                    src={IMAGES[i]}
+                    alt={post.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 left-4 pill bg-white shadow-sm">
+                    {post.tag}
+                  </div>
+                </div>
+
+                <div className="flex-1 p-8 flex flex-col">
+                  <div className="flex items-center gap-2 font-sans text-xs font-bold text-brand-eggplant/50 mb-4 uppercase tracking-wider">
+                    <Clock className="h-3.5 w-3.5" />
+                    {post.date}
+                  </div>
+
+                  <h3 className="font-sans text-2xl font-extrabold text-brand-eggplant leading-tight transition-colors group-hover:text-brand-magenta">
+                    {post.title}
+                  </h3>
+
+                  <p className="mt-4 font-serif text-base text-brand-eggplant/70 flex-1">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="mt-8 flex items-center font-sans text-sm font-bold text-brand-magenta">
+                    Read article <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
               </div>
-              <h3 className="mt-5 text-base font-semibold text-white group-hover:text-[#00d4ff] transition-colors leading-snug">
-                {p.title}
-              </h3>
-              <p className="mt-3 text-sm text-white/35 leading-relaxed">{p.excerpt}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
