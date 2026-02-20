@@ -9,18 +9,10 @@ import { useI18n } from "@/i18n/LanguageContext";
 const LOGO_SRC = "/upmarketlogo.png.png";
 
 export function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
   const { lang, setLang, t, langs } = useI18n();
   const [langOpen, setLangOpen] = useState(false);
   const langBtnRef = useRef<HTMLButtonElement | null>(null);
   const langMenuRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (!langOpen) return;
@@ -47,14 +39,7 @@ export function Navigation() {
   const currentLangLabel = (langs as any).find((l: any) => l.code === lang)?.label ?? "English";
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-500",
-        scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-brand-sand shadow-outseta"
-          : "bg-transparent border-b border-transparent"
-      )}
-    >
+    <header className="fixed top-0 z-50 w-full bg-white/90 backdrop-blur-xl border-b border-brand-sand shadow-outseta transition-all duration-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#home" className="flex items-center gap-3 group">
           <img

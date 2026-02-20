@@ -79,21 +79,17 @@ export function Hero() {
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
                 className="absolute top-10 right-0 w-[500px] rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 overflow-hidden shadow-2xl"
               >
-                <div className="p-6 h-[400px] w-full overflow-hidden relative">
-                  <div className="flex gap-2 mb-8">
-                    <div className="w-3 h-3 rounded-full bg-white/20"></div>
-                    <div className="w-3 h-3 rounded-full bg-white/20"></div>
-                    <div className="w-3 h-3 rounded-full bg-white/20"></div>
+                <div className="p-2 h-[400px] w-full overflow-hidden relative">
+                  <div className="absolute top-4 left-4 flex gap-2 z-10">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80 backdrop-blur-md"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80 backdrop-blur-md"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/80 backdrop-blur-md"></div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-8 w-1/3 bg-white/10 rounded-lg"></div>
-                    <div className="h-4 w-1/2 bg-white/5 rounded-lg"></div>
-                    <div className="mt-8 grid grid-cols-3 gap-4">
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className="h-24 bg-white/5 rounded-xl border border-white/10"></div>
-                      ))}
-                    </div>
-                  </div>
+                  <img
+                    src="/dashboard-hero.jpg"
+                    alt={t.hero.previewAlt}
+                    className="w-full h-full object-cover rounded-2xl opacity-90 shadow-2xl"
+                  />
                 </div>
               </motion.div>
 

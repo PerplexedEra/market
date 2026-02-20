@@ -1,40 +1,41 @@
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Box, Diamond, Hexagon, Triangle, Circle, Zap, Feather, Shield } from "lucide-react";
 
 const LOGOS = [
-  { name: "Shopify", src: "https://cdn.simpleicons.org/shopify/fff" },
-  { name: "Google", src: "https://cdn.simpleicons.org/google/fff" },
-  { name: "Stripe", src: "https://cdn.simpleicons.org/stripe/fff" },
-  { name: "Vercel", src: "https://cdn.simpleicons.org/vercel/fff" },
-  { name: "Figma", src: "https://cdn.simpleicons.org/figma/fff" },
-  { name: "GitHub", src: "https://cdn.simpleicons.org/github/fff" },
-  { name: "Notion", src: "https://cdn.simpleicons.org/notion/fff" },
-  { name: "Slack", src: "https://cdn.simpleicons.org/slack/fff" },
+  { name: "Apex Global", icon: Triangle },
+  { name: "Zenith Partners", icon: Diamond },
+  { name: "Vertex Solutions", icon: Hexagon },
+  { name: "Aura Capital", icon: Circle },
+  { name: "Lumina Tech", icon: Zap },
+  { name: "Nova Systems", icon: Box },
+  { name: "Equinox Media", icon: Feather },
+  { name: "Aegis Group", icon: Shield },
 ];
 
 export function TrustedBy() {
   const { t } = useLanguage();
+  // Double the array so it can scroll seamlessly (the CSS marquee translates -50%)
   const row = [...LOGOS, ...LOGOS];
 
   return (
-    <section className="relative py-16 overflow-hidden">
-      <div className="section-divider" style={{ top: 0, bottom: "auto" }} />
-
+    <section className="relative py-16 overflow-hidden section-sky border-y border-brand-sand">
       <div className="container-premium text-center">
-        <p className="eyebrow">{t.trustedBy?.eyebrow ?? "Trusted tools & platforms"}</p>
+        <p className="eyebrow">{t.trustedBy?.eyebrow ?? "Trusted by premium brands"}</p>
       </div>
 
-      <div className="mt-8 overflow-hidden">
-        <div className="flex w-max animate-marquee gap-16 px-8">
-          {row.map((l: { readonly name: string; readonly src: string }, i: number) => (
-            <div key={`${l.name}-${i}`} className="flex items-center gap-3 opacity-40 hover:opacity-80 transition-opacity duration-300">
-              <img src={l.src} alt={l.name} className="h-5 w-5" loading="lazy" />
-              <span className="text-sm font-medium text-white/60 whitespace-nowrap">{l.name}</span>
-            </div>
-          ))}
+      <div className="mt-12 overflow-hidden flex whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div className="flex w-max animate-marquee gap-16 px-8 items-center">
+          {row.map((l, i) => {
+            const Icon = l.icon;
+            return (
+              <div key={`${l.name}-${i}`} className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <Icon className="h-6 w-6 text-brand-blue" strokeWidth={2.5} />
+                <span className="text-xl font-sans font-bold tracking-tight text-brand-navy">{l.name}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      <div className="section-divider" />
     </section>
   );
 }

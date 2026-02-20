@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Features } from "@/components/sections/Features";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
+import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { About } from "@/components/sections/About";
@@ -39,6 +40,7 @@ function App() {
         <Hero />
         <Features />
         <BeforeAfter />
+        <TrustedBy />
         <Services />
         <Portfolio />
         <About />
