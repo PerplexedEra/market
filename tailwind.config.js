@@ -30,12 +30,10 @@ export default {
       },
       colors: {
         brand: {
-          eggplant: '#1b0d2a',
-          magenta: '#e0248c',
-          peach: '#ffd9b3',
-          yellow: '#ffe566',
-          cream: '#fff8f0',
-          sand: '#f2eae1',
+          slate: '#0A1128',   /* Deep masculine navy */
+          gold: '#FFB703',    /* Energetic warm yellow */
+          cream: '#FAFAFA',   /* Crisp off-white */
+          sand: '#F3F4F6',    /* Crisp light gray for subtle borders */
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -79,8 +77,8 @@ export default {
       boxShadow: {
         "premium": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 24px 38px 3px rgba(0, 0, 0, 0.04), 0 9px 46px 8px rgba(0, 0, 0, 0.02)",
         "premium-inner": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.03)",
-        "btn": "0 8px 16px rgba(224, 36, 140, 0.25)",
-        "btn-hover": "0 12px 24px rgba(224, 36, 140, 0.35)",
+        "btn": "0 8px 16px rgba(255, 183, 3, 0.25)",
+        "btn-hover": "0 12px 24px rgba(255, 183, 3, 0.35)",
       },
       keyframes: {
         "accordion-down": {

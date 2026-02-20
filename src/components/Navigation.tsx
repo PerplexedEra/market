@@ -51,7 +51,7 @@ export function Navigation() {
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-500",
         scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-brand-eggplant/5 shadow-sm"
+          ? "bg-white/80 backdrop-blur-xl border-b border-brand-slate/5 shadow-sm"
           : "bg-transparent border-b border-transparent"
       )}
     >
@@ -63,7 +63,7 @@ export function Navigation() {
             className="h-9 w-9 rounded-xl object-contain"
             loading="eager"
           />
-          <span className="font-sans text-xl font-extrabold tracking-tighter text-brand-eggplant group-hover:text-brand-magenta transition-colors">
+          <span className="font-sans text-xl font-extrabold tracking-tighter text-brand-slate group-hover:text-brand-gold transition-colors">
             UpMarket.
           </span>
         </a>
@@ -73,8 +73,8 @@ export function Navigation() {
             <a
               key={l.href}
               href={l.href}
-              className="relative font-sans text-sm font-bold text-brand-eggplant/60 transition-colors hover:text-brand-eggplant
-                after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:bg-brand-magenta after:transition-all after:duration-300 hover:after:w-full"
+              className="relative font-sans text-sm font-bold text-brand-slate/60 transition-colors hover:text-brand-slate
+                after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
@@ -88,8 +88,8 @@ export function Navigation() {
               type="button"
               onClick={() => setLangOpen((v) => !v)}
               className={cn(
-                "inline-flex items-center gap-2 rounded-full border-2 border-brand-eggplant/10 bg-white/50 px-4 py-2 font-sans text-sm font-bold text-brand-eggplant/80 backdrop-blur-sm",
-                "transition hover:bg-white hover:text-brand-eggplant"
+                "inline-flex items-center gap-2 rounded-full border-2 border-brand-slate/10 bg-white/50 px-4 py-2 font-sans text-sm font-bold text-brand-slate/80 backdrop-blur-sm",
+                "transition hover:bg-white hover:text-brand-slate"
               )}
               aria-haspopup="menu"
               aria-expanded={langOpen}
@@ -103,7 +103,7 @@ export function Navigation() {
               <div
                 ref={langMenuRef}
                 role="menu"
-                className="absolute right-0 mt-3 w-52 overflow-hidden rounded-[1.5rem] border border-brand-eggplant/5 bg-white/95 backdrop-blur-xl shadow-xl p-2"
+                className="absolute right-0 mt-3 w-52 overflow-hidden rounded-[1.5rem] border border-brand-slate/5 bg-white/95 backdrop-blur-xl shadow-xl p-2"
               >
                 {langs.map((l: any) => {
                   const active = l.code === lang;
@@ -115,11 +115,11 @@ export function Navigation() {
                       onClick={() => { setLang(l.code); setLangOpen(false); }}
                       className={cn(
                         "flex w-full items-center justify-between rounded-xl px-4 py-3 font-sans text-sm font-bold transition-colors",
-                        active ? "bg-brand-sand/50 text-brand-magenta" : "text-brand-eggplant/60 hover:bg-brand-sand/30 hover:text-brand-eggplant"
+                        active ? "bg-brand-sand/50 text-brand-gold" : "text-brand-slate/60 hover:bg-brand-sand/30 hover:text-brand-slate"
                       )}
                     >
                       <span>{l.label}</span>
-                      {active && <Check className="h-4 w-4 text-brand-magenta" />}
+                      {active && <Check className="h-4 w-4 text-brand-gold" />}
                     </button>
                   );
                 })}
@@ -138,21 +138,21 @@ export function Navigation() {
               <Button
                 variant="outline"
                 size="icon"
-                className="rounded-full border-brand-eggplant/10 bg-brand-sand/50 text-brand-eggplant hover:bg-brand-sand"
+                className="rounded-full border-brand-slate/10 bg-brand-sand/50 text-brand-slate hover:bg-brand-sand"
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[320px] bg-brand-cream border-l border-brand-eggplant/10 p-6">
+            <SheetContent side="right" className="w-[320px] bg-brand-cream border-l border-brand-slate/10 p-6">
               <div className="flex items-center gap-3">
                 <img src={LOGO_SRC} alt="UpMarket logo" className="h-9 w-9 rounded-xl object-contain" loading="eager" />
-                <div className="font-sans text-xl font-extrabold tracking-tight text-brand-eggplant">UpMarket.</div>
+                <div className="font-sans text-xl font-extrabold tracking-tight text-brand-slate">UpMarket.</div>
               </div>
 
               <div className="mt-5">
-                <div className="mb-3 font-sans text-xs font-bold uppercase tracking-widest text-brand-eggplant/50">
+                <div className="mb-3 font-sans text-xs font-bold uppercase tracking-widest text-brand-slate/50">
                   {t.nav.language}
                 </div>
                 <div className="grid grid-cols-2 gap-2">
@@ -166,8 +166,8 @@ export function Navigation() {
                         className={cn(
                           "rounded-xl border-2 px-4 py-3 text-left font-sans text-sm font-bold transition",
                           active
-                            ? "border-brand-magenta/30 bg-brand-magenta/5 text-brand-magenta"
-                            : "border-brand-eggplant/5 bg-transparent text-brand-eggplant/60 hover:bg-brand-sand/50"
+                            ? "border-brand-gold/30 bg-brand-gold/5 text-brand-gold"
+                            : "border-brand-slate/5 bg-transparent text-brand-slate/60 hover:bg-brand-sand/50"
                         )}
                       >
                         {l.label}
@@ -182,7 +182,7 @@ export function Navigation() {
                   <SheetClose asChild key={l.href}>
                     <a
                       href={l.href}
-                      className="rounded-xl px-4 py-3 font-sans text-base font-bold text-brand-eggplant/70 transition hover:bg-brand-sand/50 hover:text-brand-eggplant"
+                      className="rounded-xl px-4 py-3 font-sans text-base font-bold text-brand-slate/70 transition hover:bg-brand-sand/50 hover:text-brand-slate"
                     >
                       {l.label}
                     </a>
@@ -198,7 +198,7 @@ export function Navigation() {
                 </SheetClose>
               </div>
 
-              <p className="mt-8 font-serif text-sm italic text-brand-eggplant/50">{t.hero.note}</p>
+              <p className="mt-8 font-serif text-sm italic text-brand-slate/50">{t.hero.note}</p>
             </SheetContent>
           </Sheet>
         </div>

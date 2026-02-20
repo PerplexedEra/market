@@ -1,152 +1,160 @@
-import { useCallback, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import type { MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from "react";
+import { MoveHorizontal, AlertTriangle, TrendingUp, Sparkles } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-/**
- * Draggable Before/After comparison slider.
- * Shows "generic template" vs "UpMarket premium" — pure CSS + JS.
- */
 export function BeforeAfter() {
     const { t } = useLanguage();
-    const sectionRef = useScrollReveal<HTMLElement>();
-    const containerRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState(50);
-    const dragging = useRef(false);
+    const [isDragging, setIsDragging] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useScrollReveal<HTMLElement>();
 
-    const updatePosition = useCallback((clientX: number) => {
-        const el = containerRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-        setPosition((x / rect.width) * 100);
-    }, []);
+    const handleMove = (clientX: number) => {
+        if (containerRef.current) {
+            const { left, width } = containerRef.current.getBoundingClientRect();
+            const x = clientX - left;
+            const newPos = Math.max(0, Math.min(100, (x / width) * 100));
+            setPosition(newPos);
+        }
+    };
 
-    const onPointerDown = useCallback((e: React.PointerEvent) => {
-        dragging.current = true;
-        (e.target as HTMLElement).setPointerCapture(e.pointerId);
-        updatePosition(e.clientX);
-    }, [updatePosition]);
+    const handleMouseMove = (e: ReactMouseEvent) => {
+        if (isDragging) handleMove(e.clientX);
+    };
 
-    const onPointerMove = useCallback((e: React.PointerEvent) => {
-        if (!dragging.current) return;
-        updatePosition(e.clientX);
-    }, [updatePosition]);
+    const handleTouchMove = (e: ReactTouchEvent) => {
+        if (isDragging) handleMove(e.touches[0].clientX);
+    };
 
-    const onPointerUp = useCallback(() => {
-        dragging.current = false;
+    useEffect(() => {
+        const handleMouseUp = () => setIsDragging(false);
+        window.addEventListener("mouseup", handleMouseUp);
+        window.addEventListener("touchend", handleMouseUp);
+        return () => {
+            window.removeEventListener("mouseup", handleMouseUp);
+            window.removeEventListener("touchend", handleMouseUp);
+        };
     }, []);
 
     return (
-        <section ref={sectionRef} className="section-warm relative">
-
+        <section id="before-after" ref={sectionRef} className="section-warm relative">
             <div className="container-premium relative">
-                <div className="text-center max-w-2xl mx-auto" data-reveal>
+                <div className="text-center max-w-3xl mx-auto mb-16" data-reveal>
                     <p className="eyebrow">{t.beforeAfter.eyebrow}</p>
                     <h2 className="headline mt-4 text-4xl sm:text-5xl lg:text-[4rem] font-extrabold font-sans">
                         {t.beforeAfter.headline}
                     </h2>
-                    <p className="subhead mt-6 mx-auto font-serif italic">{t.beforeAfter.subhead}</p>
+                    <p className="subhead mt-6 mx-auto">
+                        {t.beforeAfter.subhead}
+                    </p>
                 </div>
 
-                <div className="mt-20 card-advanced max-w-5xl mx-auto" data-reveal="scale">
-                    <div className="card-inner p-0 overflow-hidden relative">
+                <div
+                    className="relative max-w-5xl mx-auto rounded-[2rem] p-3 sm:p-4 bg-brand-sand/50 shadow-premium border border-white/50 backdrop-blur-xl"
+                    data-reveal="scale"
+                >
+                    <div
+                        ref={containerRef}
+                        className="group relative h-[400px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-[1.5rem] bg-white cursor-ew-resize select-none"
+                        onMouseLeave={() => { setIsDragging(false); }}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleTouchMove}
+                        onMouseDown={(e) => { setIsDragging(true); handleMove(e.clientX); }}
+                        onTouchStart={(e) => { setIsDragging(true); handleMove(e.touches[0].clientX); }}
+                    >
+                        {/* AFTER: The Premium Outseta Design */}
+                        <div className="absolute inset-0 w-full h-full bg-brand-cream border border-brand-slate/5">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,183,3,0.05),transparent_50%)]" />
 
-                        <div
-                            ref={containerRef}
-                            className="ba-container relative cursor-[ew-resize] select-none aspect-[16/10] bg-white rounded-[1.5rem] overflow-hidden"
-                            onPointerDown={onPointerDown}
-                            onPointerMove={onPointerMove}
-                            onPointerUp={onPointerUp}
-                        >
-                            {/* BEFORE (ugly generic site) */}
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ zIndex: 1 }}>
-                                <div className="w-full h-full bg-gray-100 flex flex-col">
-                                    {/* Fake generic header */}
-                                    <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm">
-                                        <div className="text-gray-800 font-bold text-sm tracking-tight text-xl">Bizness.</div>
-                                        <div className="flex gap-6 text-sm font-medium text-gray-500">
-                                            <span>Home</span><span>About</span><span>Services</span><span>Contact</span>
+                            <div className="h-full flex flex-col p-8 sm:p-12 lg:p-16">
+                                <nav className="flex justify-between items-center mb-12 opacity-80">
+                                    <span className="font-sans font-extrabold text-xl tracking-tighter text-brand-slate">Brand™</span>
+                                    <div className="flex gap-4 items-center">
+                                        <div className="h-8 w-24 rounded-full bg-brand-sand/50" />
+                                        <div className="h-8 w-24 rounded-full bg-brand-gold" />
+                                    </div>
+                                </nav>
+
+                                <div className="max-w-xl relative">
+                                    <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/20 bg-brand-gold/10 px-3 py-1 text-xs font-bold text-brand-slate mb-6">
+                                        <Sparkles className="w-3 h-3 text-brand-gold" /> Premium Upgrade
+                                    </div>
+                                    <h3 className="text-4xl sm:text-5xl font-sans font-extrabold tracking-tighter text-brand-slate leading-tight mb-4">
+                                        The Modern Standard for SaaS.
+                                    </h3>
+                                    <p className="text-lg font-serif italic text-brand-slate/70 mb-8">
+                                        Beautiful typography, refined components, and seamless motion.
+                                    </p>
+                                    <div className="flex gap-4">
+                                        <div className="h-12 w-32 rounded-full bg-brand-gold shadow-btn" />
+                                        <div className="h-12 w-32 rounded-full border-2 border-brand-slate/10" />
+                                    </div>
+
+                                    <div className="absolute -right-20 top-20 bg-white p-4 rounded-2xl shadow-premium border border-brand-slate/5 flex items-center gap-4 rotate-3">
+                                        <div className="h-10 w-10 bg-brand-sand rounded-full flex items-center justify-center text-brand-gold">
+                                            <TrendingUp className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <div className="text-xs uppercase font-bold text-brand-slate/40 tracking-wider">Conversion rate</div>
+                                            <div className="text-xl font-extrabold text-brand-slate">+314%</div>
                                         </div>
                                     </div>
-                                    {/* Awful hero */}
-                                    <div className="flex-1 bg-gradient-to-b from-blue-600 to-blue-800 flex flex-col items-center justify-center p-8 text-center text-white">
-                                        <h1 className="text-3xl font-extrabold sm:text-5xl mb-4 leading-tight">Welcome to Our<br />Company Website</h1>
-                                        <p className="text-blue-100 mt-2 max-w-lg text-lg mb-8">We provide the best corporate synergy solutions for your business needs.</p>
-                                        <div className="px-8 py-4 bg-orange-500 rounded font-bold text-sm shadow cursor-pointer uppercase tracking-widest hover:bg-orange-600">Free Consultation</div>
-                                    </div>
-                                    {/* Ugly cards */}
-                                    <div className="grid grid-cols-3 gap-6 p-8 bg-gray-100">
-                                        {["Strategy", "Synergy", "Innovation"].map(s => (
-                                            <div key={s} className="bg-white border border-gray-200 shadow rounded p-6 text-center">
-                                                <div className="h-10 w-10 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">★</div>
-                                                <div className="text-gray-800 font-bold text-lg">{s}</div>
-                                                <div className="text-gray-500 text-xs mt-2 leading-relaxed">Leverage agile frameworks to provide a robust synopsis.</div>
-                                            </div>
-                                        ))}
-                                    </div>
                                 </div>
-                            </div>
-
-                            {/* AFTER (UpMarket premium Outseta style) */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center"
-                                style={{ zIndex: 2, clipPath: `inset(0 ${100 - position}% 0 0)` }}
-                            >
-                                <div className="w-full h-full flex flex-col bg-[#fff8f0]">
-                                    {/* Premium nav */}
-                                    <div className="bg-white/80 backdrop-blur-xl border-b border-[#1b0d2a]/5 px-8 py-5 flex items-center justify-between">
-                                        <div className="text-[#1b0d2a] font-extrabold text-xl tracking-tighter">UpMarket.</div>
-                                        <div className="flex gap-8 text-sm font-bold text-[#1b0d2a]/60">
-                                            <span>Services</span><span>Case Studies</span><span>About</span>
-                                            <span className="px-5 py-2.5 rounded-full bg-[#e0248c] text-white text-xs font-bold shadow-lg shadow-[#e0248c]/30">Book a Call</span>
-                                        </div>
-                                    </div>
-                                    {/* Premium hero */}
-                                    <div className="flex-1 bg-warm-mesh flex flex-col items-start justify-center p-8 sm:p-14">
-                                        <div className="text-[#e0248c] text-xs font-bold tracking-[0.2em] uppercase mb-4">Conversion-focused studio</div>
-                                        <h1 className="text-[#1b0d2a] text-4xl font-extrabold mt-2 sm:text-6xl tracking-tighter leading-[1.05] max-w-2xl">
-                                            Websites that <span className="text-[#e0248c]">close.</span><br />Apps that scale.
-                                        </h1>
-                                        <p className="text-[#1b0d2a]/70 font-serif italic text-xl mt-6 max-w-xl leading-relaxed">Everything you need to grow, from high-converting landing pages to custom web apps.</p>
-                                        <div className="mt-10 px-8 py-4 bg-[#1b0d2a] text-white rounded-full text-sm font-bold shadow-xl hover:-translate-y-1 transition-transform">
-                                            Book a Strategy Call
-                                        </div>
-                                    </div>
-                                    {/* Premium cards */}
-                                    <div className="grid grid-cols-3 gap-6 p-8 bg-white border-t border-[#1b0d2a]/5">
-                                        {[
-                                            { v: "+42%", l: "Enquiries", c: "bg-[#fffdf0]" },
-                                            { v: "-31%", l: "Bounce rate", c: "bg-[#fff0f5]" },
-                                            { v: "94/100", l: "PageSpeed", c: "bg-[#fff5eb]" }
-                                        ].map((s, i) => (
-                                            <div key={i} className={`rounded-3xl p-6 ${s.c} shadow-sm border border-[#1b0d2a]/5`}>
-                                                <div className="text-[#1b0d2a] text-3xl font-extrabold tracking-tight">{s.v}</div>
-                                                <div className="text-[#1b0d2a]/50 font-sans font-bold text-[10px] uppercase tracking-widest mt-2">{s.l}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Slider handle */}
-                            <div
-                                className="absolute top-0 bottom-0 w-1 bg-[#1b0d2a] z-10 cursor-[ew-resize]"
-                                style={{ left: `${position}%`, transform: "translateX(-50%)" }}
-                            >
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#1b0d2a] shadow-xl flex items-center justify-center text-white font-bold text-sm tracking-widest border-4 border-white transition-transform hover:scale-110">
-                                    ⟨⟩
-                                </div>
-                            </div>
-
-                            {/* Labels */}
-                            <div className="absolute bottom-6 left-6 z-20 text-xs font-bold tracking-widest uppercase text-white bg-blue-900/80 backdrop-blur px-4 py-2 rounded-full shadow-lg">
-                                {t.beforeAfter.before}
-                            </div>
-                            <div className="absolute bottom-6 right-6 z-20 text-xs font-bold tracking-widest uppercase text-white bg-[#e0248c] shadow-lg shadow-[#e0248c]/30 px-4 py-2 rounded-full">
-                                {t.beforeAfter.after}
                             </div>
                         </div>
 
+                        {/* BEFORE: Generic Bad Template */}
+                        <div
+                            className="absolute inset-y-0 left-0 w-full overflow-hidden bg-white border-r border-brand-slate/10"
+                            style={{ width: `${position}%` }}
+                        >
+                            <div className="absolute inset-0 w-full h-full min-w-[300px] flex flex-col bg-gray-50 p-8 sm:p-12 lg:p-16 border border-gray-200 saturate-50">
+                                <nav className="flex justify-between items-center mb-12">
+                                    <span className="font-serif text-xl tracking-widest text-[#0F172A]">COMPANY</span>
+                                    <div className="flex gap-6 items-center">
+                                        <span className="text-sm font-medium text-gray-400">Home</span>
+                                        <span className="text-sm font-medium text-gray-400">About</span>
+                                        <div className="px-4 py-2 rounded bg-[#0F172A] text-white text-sm font-medium">Contact</div>
+                                    </div>
+                                </nav>
+
+                                <div className="max-w-xl mt-10">
+                                    <h3 className="text-3xl font-sans font-bold text-[#0F172A] mb-4">
+                                        We provide business solutions
+                                    </h3>
+                                    <p className="text-base text-gray-500 mb-8 leading-relaxed">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
+                                    <div className="px-6 py-3 bg-blue-600 text-white w-fit text-sm font-medium">
+                                        Learn More
+                                    </div>
+
+                                    <div className="mt-12 bg-white p-4 border border-gray-200 flex items-center gap-4">
+                                        <AlertTriangle className="w-8 h-8 text-red-500" />
+                                        <div>
+                                            <div className="text-sm font-semibold text-gray-900">High Bounce Rate</div>
+                                            <div className="text-xs text-gray-500">Users leave within 3 seconds</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* SLIDER HANDLE */}
+                        <div
+                            className="absolute top-0 bottom-0 w-1 cursor-col-resize group-hover:bg-brand-gold bg-brand-slate/20 transition-colors z-20"
+                            style={{ left: `${position}%` }}
+                        >
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-brand-gold border-4 border-white shadow-premium flex items-center justify-center transition-transform group-hover:scale-110 active:scale-95 z-30">
+                                <MoveHorizontal className="h-6 w-6 text-brand-slate" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 font-sans font-bold text-[10px] sm:text-xs uppercase tracking-widest bg-white text-brand-slate border border-brand-slate/10 px-6 py-2 rounded-full shadow-sm z-30">
+                        Slide to Compare
                     </div>
                 </div>
             </div>

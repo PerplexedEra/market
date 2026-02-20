@@ -18,27 +18,23 @@ export function Testimonials() {
         </div>
 
         <div className="mt-20 grid gap-8 lg:grid-cols-3 items-stretch">
-          {t.testimonials.items.map((item: { readonly quote: string; readonly name: string; readonly meta: string }, i: number) => {
-            const innerColor = i % 3 === 0 ? "card-pastel-yellow" : i % 3 === 1 ? "card-pastel-peach" : "card-pastel-pink";
-
+          {t.testimonials.items.map((item: { readonly quote: string; readonly name: string; readonly meta: string }) => {
             return (
-              <div key={item.name} data-reveal className="card-advanced group flex flex-col items-stretch h-full">
-                <div className={`${innerColor} flex flex-col`}>
-                  <Quote className="h-8 w-8 text-brand-eggplant/10 mb-6 group-hover:text-brand-magenta transition-colors duration-300" />
+              <div key={item.name} data-reveal className="group flex flex-col items-stretch h-full rounded-[2rem] bg-brand-sand/30 p-8 sm:p-10 border border-brand-slate/5 transition-all duration-300 hover:shadow-premium hover:-translate-y-2 hover:bg-white">
+                <Quote className="h-8 w-8 text-brand-gold/30 mb-6 group-hover:text-brand-gold transition-colors duration-300" />
 
-                  <p className="font-serif text-xl leading-relaxed text-brand-eggplant/80 flex-1 italic">
-                    "{item.quote}"
-                  </p>
+                <p className="font-serif text-xl leading-relaxed text-brand-slate/80 flex-1 italic">
+                  "{item.quote}"
+                </p>
 
-                  <div className="mt-8 pt-6 border-t border-brand-eggplant/10">
-                    <div className="flex items-center gap-1 mb-3">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-brand-eggplant text-brand-eggplant" />
-                      ))}
-                    </div>
-                    <div className="font-sans text-base font-extrabold text-brand-eggplant">{item.name}</div>
-                    <div className="font-sans text-xs font-bold uppercase tracking-widest text-brand-eggplant/50 mt-1">{item.meta}</div>
+                <div className="mt-8 pt-6 border-t border-brand-slate/10">
+                  <div className="flex items-center gap-1 mb-3">
+                    {Array.from({ length: 5 }).map((_, starIdx) => (
+                      <Star key={starIdx} className="h-4 w-4 fill-brand-gold text-brand-gold" />
+                    ))}
                   </div>
+                  <div className="font-sans text-base font-extrabold text-brand-slate">{item.name}</div>
+                  <div className="font-sans text-xs font-bold uppercase tracking-widest text-brand-slate/50 mt-1">{item.meta}</div>
                 </div>
               </div>
             );

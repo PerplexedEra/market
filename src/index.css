@@ -5,35 +5,35 @@
 @tailwind utilities;
 
 /* ============================= */
-/* ROOT THEME                    */
+/* MATURE LIGHT THEME (Slate + Gold) */
 /* ============================= */
 
 @layer base {
   :root {
-    --background: 34 100% 97%;
-    /* #fff8f0 cream base */
-    --foreground: 268 53% 11%;
-    /* #1b0d2a eggplant text */
+    --background: 0 0% 98%;
+    /* Cream base #FAFAFA */
+    --foreground: 226 60% 10%;
+    /* Slate Navy #0A1128 */
     --card: 0 0% 100%;
-    --card-foreground: 268 53% 11%;
+    --card-foreground: 226 60% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 268 53% 11%;
-    --primary: 328 78% 51%;
-    /* #e0248c magenta */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 35 34% 91%;
-    /* #f2eae1 sand */
-    --secondary-foreground: 268 53% 11%;
-    --muted: 35 34% 91%;
-    --muted-foreground: 268 20% 40%;
-    --accent: 50 100% 70%;
-    /* #ffe566 yellow */
-    --accent-foreground: 268 53% 11%;
+    --popover-foreground: 226 60% 10%;
+    --primary: 43 100% 51%;
+    /* Gold #FFB703 */
+    --primary-foreground: 226 60% 10%;
+    --secondary: 220 14% 96%;
+    /* Sand #F3F4F6 */
+    --secondary-foreground: 226 60% 10%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 226 20% 40%;
+    --accent: 43 100% 51%;
+    /* Gold #FFB703 */
+    --accent-foreground: 226 60% 10%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 35 20% 85%;
-    --input: 35 20% 85%;
-    --ring: 328 78% 51%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 43 100% 51%;
     --radius: 1.5rem;
   }
 
@@ -46,7 +46,7 @@
   }
 
   body {
-    @apply bg-brand-cream text-brand-eggplant antialiased;
+    @apply bg-brand-cream text-brand-slate antialiased;
   }
 
   h1,
@@ -65,6 +65,7 @@
 @layer components {
 
   /* --- LAYOUT --- */
+  /* Reusing these for all sections EXCEPT hero to enforce clean white/cream layout */
   .section-warm {
     @apply relative overflow-hidden;
     padding: 7rem 0;
@@ -82,85 +83,54 @@
     max-width: 1280px;
   }
 
-  /* --- MESH GRADIENTS --- */
+  /* --- MESH GRADIENTS (HERO ONLY) --- */
   .bg-warm-mesh {
-    background: radial-gradient(at 0% 0%, #ffd9b3 0px, transparent 50%),
-      radial-gradient(at 100% 0%, #ffe566 0px, transparent 50%),
-      radial-gradient(at 100% 100%, #ffccd5 0px, transparent 50%),
-      radial-gradient(at 0% 100%, #fff8f0 0px, transparent 50%);
-    background-color: #fff8f0;
-  }
-
-  .bg-hero-mesh {
-    background: conic-gradient(from 180deg at 50% 50%, #ffd9b3 0deg, #ffe566 120deg, #ffccd5 240deg, #ffd9b3 360deg);
-    filter: blur(80px);
-    opacity: 0.6;
+    background: radial-gradient(at 0% 0%, #FFB70322 0px, transparent 50%),
+      radial-gradient(at 100% 0%, #0A112811 0px, transparent 50%),
+      radial-gradient(at 100% 100%, #FFB70311 0px, transparent 50%),
+      radial-gradient(at 0% 100%, #FAFAFA 0px, transparent 50%);
+    background-color: #FAFAFA;
   }
 
   /* --- TYPOGRAPHY --- */
   .eyebrow {
-    @apply font-sans text-xs font-bold uppercase tracking-[0.2em] text-brand-magenta;
+    @apply font-sans text-xs font-bold uppercase tracking-[0.2em] text-brand-gold;
   }
 
   .headline {
-    @apply text-brand-eggplant;
+    @apply text-brand-slate;
     line-height: 1.05;
   }
 
   .subhead {
-    @apply font-serif text-lg md:text-xl leading-relaxed text-brand-eggplant/70;
+    @apply font-serif text-lg md:text-xl leading-relaxed text-brand-slate/70;
     max-width: 600px;
-  }
-
-  /* --- ADVANCED NESTED CARDS --- */
-  .card-advanced {
-    @apply rounded-[2rem] bg-brand-sand/50 p-2 lg:p-3 transition-transform duration-500 hover:scale-[1.02];
-  }
-
-  .card-inner {
-    @apply relative h-full w-full rounded-[1.5rem] bg-white p-8 shadow-premium transition-shadow duration-500;
-  }
-
-  .card-advanced:hover .card-inner {
-    @apply shadow-2xl;
-  }
-
-  .card-pastel-yellow {
-    @apply card-inner bg-[#fffdf0];
-  }
-
-  .card-pastel-pink {
-    @apply card-inner bg-[#fff0f5];
-  }
-
-  .card-pastel-peach {
-    @apply card-inner bg-[#fff5eb];
   }
 
   /* --- BUTTONS --- */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-sans text-base font-bold text-white transition-all duration-300;
-    background-color: var(--brand-magenta);
-    box-shadow: 0 8px 16px rgba(224, 36, 140, 0.25);
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-sans text-base font-bold text-brand-slate transition-all duration-300;
+    background-color: var(--brand-gold);
+    box-shadow: 0 8px 16px rgba(255, 183, 3, 0.25);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(224, 36, 140, 0.35);
+    box-shadow: 0 12px 24px rgba(255, 183, 3, 0.35);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-eggplant/10 bg-transparent px-8 py-4 font-sans text-base font-bold text-brand-eggplant transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-slate/10 bg-transparent px-8 py-4 font-sans text-base font-bold text-brand-slate transition-all duration-300;
   }
 
   .btn-secondary:hover {
-    @apply border-brand-eggplant/20 bg-brand-eggplant/5;
+    @apply border-brand-slate/20 bg-brand-slate/5;
     transform: translateY(-2px);
   }
 
   /* --- TAGS & PILLS --- */
   .pill {
-    @apply inline-flex items-center rounded-full bg-brand-sand px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-brand-eggplant;
+    @apply inline-flex items-center rounded-full bg-brand-sand px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-brand-slate;
   }
 }
 
@@ -224,14 +194,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff8f0;
+  background: #FAFAFA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f2eae1;
+  background: #E5E7EB;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e0248c;
+  background: #FFB703;
 }
