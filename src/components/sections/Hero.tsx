@@ -16,7 +16,7 @@ export function Hero() {
       <VantaGlobe />
 
       {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-brand-navy/30 pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-brand-navy/20 pointer-events-none" />
 
       <div className="container-premium relative z-10 mx-auto">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">

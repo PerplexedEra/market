@@ -13,7 +13,6 @@ export default function VantaGlobe() {
         const init = async () => {
             if (!elRef.current) return;
 
-            // Respect reduced motion
             const reduceMotion =
                 window.matchMedia &&
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -45,7 +44,7 @@ export default function VantaGlobe() {
                 scaleMobile: 0.7,
                 maxDistance: 20,
                 backgroundAlpha: 1,
-            });
+            }) as VantaEffect;
         };
 
         init();
@@ -60,7 +59,8 @@ export default function VantaGlobe() {
     return (
         <div
             ref={elRef}
-            className="absolute inset-0 -z-10"
+            className="absolute inset-0 z-0"
+            style={{ width: "100%", height: "100%" }}
             aria-hidden="true"
         />
     );
