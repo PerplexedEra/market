@@ -51,7 +51,7 @@ export function Navigation() {
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-500",
         scrolled
-          ? "bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+          ? "bg-[#050510]/80 backdrop-blur-xl border-b border-white/[0.05] shadow-lg shadow-black/20"
           : "bg-transparent border-b border-transparent"
       )}
     >
@@ -63,7 +63,7 @@ export function Navigation() {
             className="h-9 w-9 rounded-xl object-contain"
             loading="eager"
           />
-          <span className="font-display text-base font-semibold tracking-tight text-white group-hover:text-purple-300 transition-colors">
+          <span className="font-display text-base font-semibold tracking-tight text-white group-hover:text-[#00d4ff] transition-colors">
             UpMarket
           </span>
         </a>
@@ -74,7 +74,7 @@ export function Navigation() {
               key={l.href}
               href={l.href}
               className="relative text-sm font-medium text-white/50 transition-colors hover:text-white
-                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-purple-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full"
+                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#8b5cf6] after:to-[#00d4ff] after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
@@ -103,7 +103,7 @@ export function Navigation() {
               <div
                 ref={langMenuRef}
                 role="menu"
-                className="absolute right-0 mt-2 w-52 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a1a]/95 backdrop-blur-xl shadow-xl"
+                className="absolute right-0 mt-2 w-52 overflow-hidden rounded-xl border border-white/[0.08] bg-[#050510]/95 backdrop-blur-xl shadow-xl"
               >
                 {langs.map((l: any) => {
                   const active = l.code === lang;
@@ -115,11 +115,11 @@ export function Navigation() {
                       onClick={() => { setLang(l.code); setLangOpen(false); }}
                       className={cn(
                         "flex w-full items-center justify-between px-3 py-2.5 text-sm transition-colors",
-                        active ? "bg-purple-500/10 text-purple-300" : "text-white/60 hover:bg-white/5 hover:text-white"
+                        active ? "bg-[#00d4ff]/10 text-[#00d4ff]" : "text-white/60 hover:bg-white/5 hover:text-white"
                       )}
                     >
                       <span>{l.label}</span>
-                      {active && <Check className="h-4 w-4 text-purple-400" />}
+                      {active && <Check className="h-4 w-4 text-[#00d4ff]" />}
                     </button>
                   );
                 })}
@@ -145,7 +145,7 @@ export function Navigation() {
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[320px] bg-[#0a0a1a] border-l border-white/10 p-6">
+            <SheetContent side="right" className="w-[320px] bg-[#050510] border-l border-white/[0.08] p-6">
               <div className="flex items-center gap-3">
                 <img src={LOGO_SRC} alt="UpMarket logo" className="h-9 w-9 rounded-xl object-contain" loading="eager" />
                 <div className="font-display text-sm font-semibold text-white">UpMarket</div>
@@ -166,7 +166,7 @@ export function Navigation() {
                         className={cn(
                           "rounded-xl border px-3 py-2 text-left text-sm transition",
                           active
-                            ? "border-purple-500/50 bg-purple-500/10 text-purple-300"
+                            ? "border-[#00d4ff]/40 bg-[#00d4ff]/10 text-[#00d4ff]"
                             : "border-white/10 bg-white/5 text-white/60 hover:bg-white/10"
                         )}
                       >
