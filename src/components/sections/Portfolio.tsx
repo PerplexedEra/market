@@ -7,7 +7,6 @@ const PORTFOLIO_IMAGES = [
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
   "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-  "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80",
 ];
 
 export function Portfolio() {
@@ -17,7 +16,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" ref={sectionRef} className="section-white relative">
       <div className="container-premium relative">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-20" data-reveal>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-16" data-reveal>
           <div className="max-w-2xl">
             <p className="eyebrow">{t.portfolio.eyebrow}</p>
             <h2 className="headline mt-4 text-4xl sm:text-5xl lg:text-[4rem] font-extrabold font-sans">
@@ -29,7 +28,7 @@ export function Portfolio() {
           </button>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-3">
           {t.portfolio.items.map((caseItem: { readonly title: string; readonly description: string; readonly tags: readonly string[]; readonly metric: string; readonly metricDetail: string }, i: number) => (
             <PremiumCard
               key={caseItem.title}

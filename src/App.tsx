@@ -30,7 +30,7 @@ function App() {
   }, [onMouseMove]);
 
   return (
-    <div className="min-h-screen bg-brand-cream text-brand-slate overflow-x-hidden relative">
+    <div className="min-h-screen bg-brand-cream text-brand-navy overflow-x-hidden relative">
       {/* Cursor glow — subtle site-wide radial light */}
       <div ref={cursorRef} className="cursor-glow hidden lg:block" />
 

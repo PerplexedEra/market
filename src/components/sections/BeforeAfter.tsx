@@ -39,7 +39,7 @@ export function BeforeAfter() {
     }, []);
 
     return (
-        <section id="before-after" ref={sectionRef} className="section-warm relative">
+        <section id="before-after" ref={sectionRef} className="section-cream relative">
             <div className="container-premium relative">
                 <div className="text-center max-w-3xl mx-auto mb-16" data-reveal>
                     <p className="eyebrow">{t.beforeAfter.eyebrow}</p>
@@ -52,80 +52,80 @@ export function BeforeAfter() {
                 </div>
 
                 <div
-                    className="relative max-w-5xl mx-auto rounded-[2rem] p-3 sm:p-4 bg-brand-sand/50 shadow-premium border border-white/50 backdrop-blur-xl"
+                    className="relative max-w-5xl mx-auto card-outseta p-3 sm:p-4"
                     data-reveal="scale"
                 >
                     <div
                         ref={containerRef}
-                        className="group relative h-[400px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-[1.5rem] bg-white cursor-ew-resize select-none"
+                        className="group relative h-[400px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-[1.25rem] bg-white cursor-ew-resize select-none"
                         onMouseLeave={() => { setIsDragging(false); }}
                         onMouseMove={handleMouseMove}
                         onTouchMove={handleTouchMove}
                         onMouseDown={(e) => { setIsDragging(true); handleMove(e.clientX); }}
                         onTouchStart={(e) => { setIsDragging(true); handleMove(e.touches[0].clientX); }}
                     >
-                        {/* AFTER: The Premium Outseta Design */}
-                        <div className="absolute inset-0 w-full h-full bg-brand-cream border border-brand-slate/5">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,183,3,0.05),transparent_50%)]" />
+                        {/* AFTER — Premium */}
+                        <div className="absolute inset-0 w-full h-full bg-brand-cream">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,64,175,0.04),transparent_50%)]" />
 
                             <div className="h-full flex flex-col p-8 sm:p-12 lg:p-16">
                                 <nav className="flex justify-between items-center mb-12 opacity-80">
-                                    <span className="font-sans font-extrabold text-xl tracking-tighter text-brand-slate">Brand™</span>
+                                    <span className="font-sans font-extrabold text-xl tracking-tighter text-brand-navy">Brand™</span>
                                     <div className="flex gap-4 items-center">
-                                        <div className="h-8 w-24 rounded-full bg-brand-sand/50" />
+                                        <div className="h-8 w-24 rounded-full bg-brand-sand" />
                                         <div className="h-8 w-24 rounded-full bg-brand-gold" />
                                     </div>
                                 </nav>
 
                                 <div className="max-w-xl relative">
-                                    <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/20 bg-brand-gold/10 px-3 py-1 text-xs font-bold text-brand-slate mb-6">
-                                        <Sparkles className="w-3 h-3 text-brand-gold" /> Premium Upgrade
+                                    <div className="inline-flex items-center gap-2 pill mb-6">
+                                        <Sparkles className="w-3 h-3 text-brand-blue" /> Premium Upgrade
                                     </div>
-                                    <h3 className="text-4xl sm:text-5xl font-sans font-extrabold tracking-tighter text-brand-slate leading-tight mb-4">
+                                    <h3 className="text-4xl sm:text-5xl font-sans font-extrabold tracking-tighter text-brand-navy leading-tight mb-4">
                                         The Modern Standard for SaaS.
                                     </h3>
-                                    <p className="text-lg font-serif italic text-brand-slate/70 mb-8">
+                                    <p className="text-lg font-serif italic text-brand-navy/60 mb-8">
                                         Beautiful typography, refined components, and seamless motion.
                                     </p>
                                     <div className="flex gap-4">
                                         <div className="h-12 w-32 rounded-full bg-brand-gold shadow-btn" />
-                                        <div className="h-12 w-32 rounded-full border-2 border-brand-slate/10" />
+                                        <div className="h-12 w-32 rounded-full border-2 border-brand-navy/10" />
                                     </div>
 
-                                    <div className="absolute -right-20 top-20 bg-white p-4 rounded-2xl shadow-premium border border-brand-slate/5 flex items-center gap-4 rotate-3">
-                                        <div className="h-10 w-10 bg-brand-sand rounded-full flex items-center justify-center text-brand-gold">
+                                    <div className="absolute -right-20 top-20 card-outseta p-4 flex items-center gap-4 rotate-3">
+                                        <div className="h-10 w-10 bg-brand-sky/50 rounded-full flex items-center justify-center text-brand-blue">
                                             <TrendingUp className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs uppercase font-bold text-brand-slate/40 tracking-wider">Conversion rate</div>
-                                            <div className="text-xl font-extrabold text-brand-slate">+314%</div>
+                                            <div className="text-xs uppercase font-bold text-brand-navy/40 tracking-wider">Conversion</div>
+                                            <div className="text-xl font-extrabold text-brand-navy">+314%</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* BEFORE: Generic Bad Template */}
+                        {/* BEFORE — Generic */}
                         <div
-                            className="absolute inset-y-0 left-0 w-full overflow-hidden bg-white border-r border-brand-slate/10"
+                            className="absolute inset-y-0 left-0 w-full overflow-hidden bg-white border-r border-brand-sand"
                             style={{ width: `${position}%` }}
                         >
-                            <div className="absolute inset-0 w-full h-full min-w-[300px] flex flex-col bg-gray-50 p-8 sm:p-12 lg:p-16 border border-gray-200 saturate-50">
+                            <div className="absolute inset-0 w-full h-full min-w-[300px] flex flex-col bg-gray-50 p-8 sm:p-12 lg:p-16 saturate-50">
                                 <nav className="flex justify-between items-center mb-12">
-                                    <span className="font-serif text-xl tracking-widest text-[#0F172A]">COMPANY</span>
+                                    <span className="font-serif text-xl tracking-widest text-gray-800">COMPANY</span>
                                     <div className="flex gap-6 items-center">
                                         <span className="text-sm font-medium text-gray-400">Home</span>
                                         <span className="text-sm font-medium text-gray-400">About</span>
-                                        <div className="px-4 py-2 rounded bg-[#0F172A] text-white text-sm font-medium">Contact</div>
+                                        <div className="px-4 py-2 rounded bg-gray-800 text-white text-sm">Contact</div>
                                     </div>
                                 </nav>
 
                                 <div className="max-w-xl mt-10">
-                                    <h3 className="text-3xl font-sans font-bold text-[#0F172A] mb-4">
+                                    <h3 className="text-3xl font-sans font-bold text-gray-800 mb-4">
                                         We provide business solutions
                                     </h3>
                                     <p className="text-base text-gray-500 mb-8 leading-relaxed">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     </p>
                                     <div className="px-6 py-3 bg-blue-600 text-white w-fit text-sm font-medium">
                                         Learn More
@@ -142,18 +142,18 @@ export function BeforeAfter() {
                             </div>
                         </div>
 
-                        {/* SLIDER HANDLE */}
+                        {/* SLIDER */}
                         <div
-                            className="absolute top-0 bottom-0 w-1 cursor-col-resize group-hover:bg-brand-gold bg-brand-slate/20 transition-colors z-20"
+                            className="absolute top-0 bottom-0 w-0.5 bg-brand-sand group-hover:bg-brand-blue transition-colors z-20 cursor-col-resize"
                             style={{ left: `${position}%` }}
                         >
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-brand-gold border-4 border-white shadow-premium flex items-center justify-center transition-transform group-hover:scale-110 active:scale-95 z-30">
-                                <MoveHorizontal className="h-6 w-6 text-brand-slate" />
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-brand-blue border-4 border-white shadow-outseta-hover flex items-center justify-center transition-transform group-hover:scale-110 active:scale-95 z-30">
+                                <MoveHorizontal className="h-6 w-6 text-white" />
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 font-sans font-bold text-[10px] sm:text-xs uppercase tracking-widest bg-white text-brand-slate border border-brand-slate/10 px-6 py-2 rounded-full shadow-sm z-30">
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 pill bg-white border border-brand-sand shadow-outseta z-30">
                         Slide to Compare
                     </div>
                 </div>

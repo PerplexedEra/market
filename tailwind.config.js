@@ -30,10 +30,12 @@ export default {
       },
       colors: {
         brand: {
-          slate: '#0A1128',   /* Deep masculine navy */
-          gold: '#FFB703',    /* Energetic warm yellow */
-          cream: '#FAFAFA',   /* Crisp off-white */
-          sand: '#F3F4F6',    /* Crisp light gray for subtle borders */
+          navy: '#0B1D3A',
+          blue: '#1E40AF',
+          sky: '#DBEAFE',
+          gold: '#D4A017',
+          cream: '#F8F6F1',
+          sand: '#EDE9E0',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -75,10 +77,12 @@ export default {
         sm: 'calc(var(--radius) - 4px)'
       },
       boxShadow: {
-        "premium": "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 24px 38px 3px rgba(0, 0, 0, 0.04), 0 9px 46px 8px rgba(0, 0, 0, 0.02)",
-        "premium-inner": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.03)",
-        "btn": "0 8px 16px rgba(255, 183, 3, 0.25)",
-        "btn-hover": "0 12px 24px rgba(255, 183, 3, 0.35)",
+        "premium": "0 4px 6px -1px rgba(11, 29, 58, 0.04), 0 24px 38px 3px rgba(11, 29, 58, 0.03), 0 9px 46px 8px rgba(11, 29, 58, 0.02)",
+        "premium-inner": "inset 0 2px 4px 0 rgba(11, 29, 58, 0.03)",
+        "btn": "0 8px 16px rgba(212, 160, 23, 0.25)",
+        "btn-hover": "0 12px 24px rgba(212, 160, 23, 0.35)",
+        "outseta": "0 1px 3px rgba(11, 29, 58, 0.06), 0 0 0 1px rgba(11, 29, 58, 0.04)",
+        "outseta-hover": "0 8px 24px rgba(11, 29, 58, 0.08), 0 0 0 1px rgba(30, 64, 175, 0.15)",
       },
       keyframes: {
         "accordion-down": {
@@ -89,19 +93,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "warm-mesh": {
-          "0%, 100%": {
-            backgroundPosition: "0% 50%",
-          },
-          "50%": {
-            backgroundPosition: "100% 50%",
-          }
-        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "warm-mesh": "warm-mesh 15s ease infinite",
       }
     }
   },

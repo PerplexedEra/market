@@ -1,4 +1,4 @@
-export function MarkerUnderline({ className = "", color = "#FFB703" }: { className?: string; color?: string }) {
+export function MarkerUnderline({ className = "", color = "#1E40AF" }: { className?: string; color?: string }) {
     return (
         <svg
             className={`absolute bottom-0 left-0 w-full h-auto translate-y-1/2 pointer-events-none ${className}`}
@@ -18,7 +18,7 @@ export function MarkerUnderline({ className = "", color = "#FFB703" }: { classNa
     );
 }
 
-export function HandArrow({ className = "", color = "#FFB703" }: { className?: string; color?: string }) {
+export function HandArrow({ className = "", color = "#1E40AF" }: { className?: string; color?: string }) {
     return (
         <svg
             className={`w-12 h-12 pointer-events-none ${className}`}

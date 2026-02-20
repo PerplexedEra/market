@@ -7,18 +7,18 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="relative border-t border-brand-eggplant/5 bg-white pt-24 pb-12">
+    <footer className="relative border-t border-brand-sand bg-white pt-24 pb-12">
       <div className="container-premium relative">
         <div className="grid gap-16 lg:grid-cols-2">
           {/* Brand Col */}
           <div className="max-w-md">
             <a href="#home" className="flex items-center gap-3 group w-fit">
               <img src={LOGO_SRC} alt="UpMarket logo" className="h-10 w-10 rounded-xl object-contain" />
-              <span className="font-sans text-2xl font-extrabold tracking-tighter text-brand-eggplant group-hover:text-brand-magenta transition-colors">
+              <span className="font-sans text-2xl font-extrabold tracking-tighter text-brand-navy group-hover:text-brand-blue transition-colors">
                 UpMarket.
               </span>
             </a>
-            <p className="mt-6 font-serif text-lg leading-relaxed text-brand-eggplant/70">
+            <p className="mt-6 font-serif text-lg leading-relaxed text-brand-navy/60">
               {t.footer.description}
             </p>
 
@@ -27,7 +27,7 @@ export function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-sand text-brand-eggplant transition-all hover:-translate-y-1 hover:bg-brand-magenta hover:text-white"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-cream text-brand-navy/60 transition-all hover:-translate-y-1 hover:bg-brand-blue hover:text-white shadow-outseta"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -38,11 +38,11 @@ export function Footer() {
           {/* Links Grid */}
           <div className="grid gap-8 sm:grid-cols-2">
             <div>
-              <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-brand-eggplant">{t.footer.services}</h4>
+              <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-brand-navy">{t.footer.services}</h4>
               <ul className="mt-6 space-y-4">
                 {t.footer.servicesLinks.map((link: string) => (
                   <li key={link}>
-                    <a href="#" className="font-sans text-base font-medium text-brand-eggplant/70 transition-colors hover:text-brand-magenta">
+                    <a href="#" className="font-sans text-base font-medium text-brand-navy/60 transition-colors hover:text-brand-blue">
                       {link}
                     </a>
                   </li>
@@ -51,11 +51,11 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-brand-eggplant">{t.footer.company}</h4>
+              <h4 className="font-sans text-sm font-bold uppercase tracking-widest text-brand-navy">{t.footer.company}</h4>
               <ul className="mt-6 space-y-4">
                 {t.footer.companyLinks.map((link: string) => (
                   <li key={link}>
-                    <a href="#" className="font-sans text-base font-medium text-brand-eggplant/70 transition-colors hover:text-brand-magenta">
+                    <a href="#" className="font-sans text-base font-medium text-brand-navy/60 transition-colors hover:text-brand-blue">
                       {link}
                     </a>
                   </li>
@@ -65,15 +65,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-24 flex flex-col items-center justify-between border-t border-brand-eggplant/5 pt-8 sm:flex-row">
-          <p className="font-sans text-sm font-medium text-brand-eggplant/50">
+        <div className="mt-24 flex flex-col items-center justify-between border-t border-brand-sand pt-8 sm:flex-row">
+          <p className="font-sans text-sm font-medium text-brand-navy/40">
             {t.footer.rights.replace('{year}', new Date().getFullYear().toString())}
           </p>
           <div className="mt-4 flex gap-6 sm:mt-0">
-            <a href="#" className="font-sans text-sm font-medium text-brand-eggplant/50 hover:text-brand-magenta">
+            <a href="#" className="font-sans text-sm font-medium text-brand-navy/40 hover:text-brand-blue">
               Privacy Policy
             </a>
-            <a href="#" className="font-sans text-sm font-medium text-brand-eggplant/50 hover:text-brand-magenta">
+            <a href="#" className="font-sans text-sm font-medium text-brand-navy/40 hover:text-brand-blue">
               Terms of Service
             </a>
           </div>

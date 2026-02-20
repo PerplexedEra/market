@@ -5,35 +5,35 @@
 @tailwind utilities;
 
 /* ============================= */
-/* MATURE LIGHT THEME (Slate + Gold) */
+/* BLUE / WHITE / GOLD BUSINESS  */
 /* ============================= */
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    /* Cream base #FAFAFA */
-    --foreground: 226 60% 10%;
-    /* Slate Navy #0A1128 */
+    --background: 40 20% 96%;
+    /* Cream #F8F6F1 */
+    --foreground: 214 68% 14%;
+    /* Navy #0B1D3A */
     --card: 0 0% 100%;
-    --card-foreground: 226 60% 10%;
+    --card-foreground: 214 68% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 226 60% 10%;
-    --primary: 43 100% 51%;
-    /* Gold #FFB703 */
-    --primary-foreground: 226 60% 10%;
-    --secondary: 220 14% 96%;
-    /* Sand #F3F4F6 */
-    --secondary-foreground: 226 60% 10%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 226 20% 40%;
-    --accent: 43 100% 51%;
-    /* Gold #FFB703 */
-    --accent-foreground: 226 60% 10%;
+    --popover-foreground: 214 68% 14%;
+    --primary: 43 75% 46%;
+    /* Gold #D4A017 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 37 20% 91%;
+    /* Sand #EDE9E0 */
+    --secondary-foreground: 214 68% 14%;
+    --muted: 37 20% 91%;
+    --muted-foreground: 214 30% 45%;
+    --accent: 224 73% 40%;
+    /* Blue #1E40AF */
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 43 100% 51%;
+    --border: 37 18% 88%;
+    --input: 37 18% 88%;
+    --ring: 224 73% 40%;
     --radius: 1.5rem;
   }
 
@@ -46,7 +46,7 @@
   }
 
   body {
-    @apply bg-brand-cream text-brand-slate antialiased;
+    @apply bg-brand-cream text-brand-navy antialiased;
   }
 
   h1,
@@ -59,18 +59,10 @@
 }
 
 /* ============================= */
-/* THEME UTILITIES               */
+/* SECTION LAYOUTS (Variety)     */
 /* ============================= */
 
 @layer components {
-
-  /* --- LAYOUT --- */
-  /* Reusing these for all sections EXCEPT hero to enforce clean white/cream layout */
-  .section-warm {
-    @apply relative overflow-hidden;
-    padding: 7rem 0;
-    background: var(--brand-cream);
-  }
 
   .section-white {
     @apply relative overflow-hidden;
@@ -78,59 +70,89 @@
     background: #ffffff;
   }
 
+  .section-cream {
+    @apply relative overflow-hidden;
+    padding: 7rem 0;
+    background: #F8F6F1;
+  }
+
+  .section-sky {
+    @apply relative overflow-hidden;
+    padding: 7rem 0;
+    background: linear-gradient(180deg, rgba(219, 234, 254, 0.3) 0%, rgba(248, 246, 241, 0.5) 100%);
+  }
+
+  .section-navy {
+    @apply relative overflow-hidden;
+    padding: 7rem 0;
+    background: #0B1D3A;
+  }
+
   .container-premium {
     @apply mx-auto px-6;
     max-width: 1280px;
   }
 
-  /* --- MESH GRADIENTS (HERO ONLY) --- */
-  .bg-warm-mesh {
-    background: radial-gradient(at 0% 0%, #FFB70322 0px, transparent 50%),
-      radial-gradient(at 100% 0%, #0A112811 0px, transparent 50%),
-      radial-gradient(at 100% 100%, #FFB70311 0px, transparent 50%),
-      radial-gradient(at 0% 100%, #FAFAFA 0px, transparent 50%);
-    background-color: #FAFAFA;
+  /* --- HERO GRADIENT (Blue mesh only here) --- */
+  .bg-hero-mesh {
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(30, 64, 175, 0.08) 0px, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(219, 234, 254, 0.5) 0px, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(212, 160, 23, 0.05) 0px, transparent 60%);
+    background-color: #F8F6F1;
   }
 
   /* --- TYPOGRAPHY --- */
   .eyebrow {
-    @apply font-sans text-xs font-bold uppercase tracking-[0.2em] text-brand-gold;
+    @apply font-sans text-xs font-bold uppercase tracking-[0.2em] text-brand-blue;
   }
 
   .headline {
-    @apply text-brand-slate;
+    @apply text-brand-navy;
     line-height: 1.05;
   }
 
   .subhead {
-    @apply font-serif text-lg md:text-xl leading-relaxed text-brand-slate/70;
+    @apply font-serif text-lg md:text-xl leading-relaxed text-brand-navy/60;
     max-width: 600px;
   }
 
   /* --- BUTTONS --- */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-sans text-base font-bold text-brand-slate transition-all duration-300;
-    background-color: var(--brand-gold);
-    box-shadow: 0 8px 16px rgba(255, 183, 3, 0.25);
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-sans text-base font-bold text-white transition-all duration-300;
+    background-color: #D4A017;
+    box-shadow: 0 8px 16px rgba(212, 160, 23, 0.25);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(255, 183, 3, 0.35);
+    box-shadow: 0 12px 24px rgba(212, 160, 23, 0.35);
+    background-color: #c4930f;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-slate/10 bg-transparent px-8 py-4 font-sans text-base font-bold text-brand-slate transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-navy/10 bg-transparent px-8 py-4 font-sans text-base font-bold text-brand-navy transition-all duration-300;
   }
 
   .btn-secondary:hover {
-    @apply border-brand-slate/20 bg-brand-slate/5;
+    @apply border-brand-blue/30 bg-brand-sky/30;
     transform: translateY(-2px);
+  }
+
+  /* --- OUTSETA-STYLE CARD --- */
+  .card-outseta {
+    @apply relative rounded-3xl bg-white border border-brand-sand transition-all duration-500;
+    box-shadow: 0 1px 3px rgba(11, 29, 58, 0.06), 0 0 0 1px rgba(11, 29, 58, 0.04);
+  }
+
+  .card-outseta:hover {
+    box-shadow: 0 8px 24px rgba(11, 29, 58, 0.08), 0 0 0 1px rgba(30, 64, 175, 0.15);
+    transform: translateY(-4px);
   }
 
   /* --- TAGS & PILLS --- */
   .pill {
-    @apply inline-flex items-center rounded-full bg-brand-sand px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-brand-slate;
+    @apply inline-flex items-center rounded-full bg-brand-sky/50 px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-wider text-brand-blue;
   }
 }
 
@@ -138,7 +160,6 @@
 /* SCROLL REVEAL SYSTEM          */
 /* ============================= */
 
-/* Elements waiting to be revealed */
 [data-reveal] {
   opacity: 0;
   transform: translateY(30px);
@@ -152,7 +173,6 @@
   transform: translateY(0);
 }
 
-/* Stagger delays for children */
 .revealed [data-reveal]:nth-child(1) {
   transition-delay: 0ms;
 }
@@ -173,7 +193,6 @@
   transition-delay: 400ms;
 }
 
-/* Scale up */
 [data-reveal="scale"] {
   opacity: 0;
   transform: scale(0.95);
@@ -194,14 +213,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAFAFA;
+  background: #F8F6F1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5E7EB;
+  background: #EDE9E0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFB703;
+  background: #D4A017;
 }

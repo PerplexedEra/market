@@ -14,13 +14,13 @@ export function Services() {
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="services" ref={sectionRef} className="section-warm relative">
+    <section id="services" ref={sectionRef} className="section-sky relative">
       <div className="container-premium relative">
-        <div className="text-center max-w-3xl mx-auto mb-20" data-reveal>
+        <div className="text-center max-w-3xl mx-auto mb-16" data-reveal>
           <p className="eyebrow">{t.services.eyebrow}</p>
           <h2 className="headline mt-4 text-4xl sm:text-5xl lg:text-[4rem] font-extrabold font-sans relative inline-block">
             {t.services.headline}
-            <MarkerUnderline color="#FFB703" className="w-[110%] -left-[5%]" />
+            <MarkerUnderline color="#1E40AF" className="w-[110%] -left-[5%]" />
           </h2>
           <p className="subhead mt-6 mx-auto">
             {t.services.subhead}
