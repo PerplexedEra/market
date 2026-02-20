@@ -63,7 +63,7 @@ export function Hero() {
               </a>
             </div>
 
-            <p className="mt-6 font-sans text-xs font-bold uppercase tracking-widest text-white/30">
+            <p className="mt-6 font-sans text-xs font-bold uppercase tracking-widest text-white/30 w-full text-center lg:text-left">
               {t.hero.note}
             </p>
           </motion.div>

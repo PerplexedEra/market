@@ -15,7 +15,7 @@ export const translations = {
       headline: "Let's build something that converts.",
       subhead:
         "Tell us what you need. We'll respond with a clear plan, timeline, and next steps — within 24 hours.",
-      primary: "Book a Free Strategy Call",
+      primary: "Let's Get Started",
       secondary: "See Case Studies",
       points: [
         "Clear scope & timeline",
@@ -76,10 +76,10 @@ export const translations = {
       headline2: "Apps that scale.",
       subhead:
         "Conversion-focused digital infrastructure for serious brands. We build high-performance websites and apps that turn visitors into revenue.",
-      ctaPrimary: "Book a Free Strategy Call",
+      ctaPrimary: "Start a Project",
       ctaSecondary: "View Case Studies",
-      note: "Based in Sandton • Serving SA & remote clients • Response within 24 hours",
-      chips: ["Conversion-focused", "SEO-ready", "Premium finish"],
+      note: "Trusted world wide • serving elite brands • available for new projects",
+      chips: ["Conversion-focused", "SEO-ready", "Premium services"],
       previewTitle: "Live Client Dashboard",
       previewAlt: "UpMarket preview",
     },
@@ -274,7 +274,7 @@ export const translations = {
       servicesLinks: ["Landing Pages", "Web Applications", "SEO & Growth", "Digital Strategy"],
       company: "Company",
       companyLinks: ["About Us", "Case Studies", "Blog", "Contact"],
-      rights: "© {year} UpMarket Digital. All rights reserved."
+      rights: "© {year} UpMarket Digital Pty Ltd"
     },
   },
 

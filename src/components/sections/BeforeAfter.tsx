@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import type { MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from "react";
-import { MoveHorizontal, AlertTriangle, TrendingUp, Sparkles } from "lucide-react";
+import { MoveHorizontal, AlertTriangle, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -66,76 +66,87 @@ export function BeforeAfter() {
                     >
                         {/* AFTER — Premium */}
                         <div className="absolute inset-0 w-full h-full bg-brand-cream">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,64,175,0.04),transparent_50%)]" />
+                            {/* Animated background element for 'After' */}
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,160,23,0.08),transparent_50%)]" />
 
                             <div className="h-full flex flex-col p-8 sm:p-12 lg:p-16">
                                 <nav className="flex justify-between items-center mb-12 opacity-80">
-                                    <span className="font-sans font-extrabold text-xl tracking-tighter text-brand-navy">Brand™</span>
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-8 h-8 rounded-lg bg-brand-navy flex items-center justify-center">
+                                            <div className="w-4 h-4 rounded-sm bg-brand-gold" />
+                                        </div>
+                                        <span className="font-sans font-extrabold text-xl tracking-tighter text-brand-navy">EliteStudio.</span>
+                                    </div>
                                     <div className="flex gap-4 items-center">
-                                        <div className="h-8 w-24 rounded-full bg-brand-sand" />
-                                        <div className="h-8 w-24 rounded-full bg-brand-gold" />
+                                        <div className="h-2 w-12 rounded-full bg-brand-sand" />
+                                        <div className="h-2 w-8 rounded-full bg-brand-sand" />
+                                        <div className="h-8 w-24 rounded-full bg-brand-gold shadow-btn" />
                                     </div>
                                 </nav>
 
                                 <div className="max-w-xl relative">
                                     <div className="inline-flex items-center gap-2 pill mb-6">
-                                        <Sparkles className="w-3 h-3 text-brand-blue" /> Premium Upgrade
+                                        <Sparkles className="w-3 h-3 text-brand-blue" /> Premium Conversion
                                     </div>
-                                    <h3 className="text-4xl sm:text-5xl font-sans font-extrabold tracking-tighter text-brand-navy leading-tight mb-4">
-                                        The Modern Standard for SaaS.
+                                    <h3 className="text-4xl sm:text-5xl lg:text-6xl font-sans font-extrabold tracking-tighter text-brand-navy leading-[1.1] mb-6">
+                                        High-end builds for <span className="text-brand-blue">serious brands.</span>
                                     </h3>
-                                    <p className="text-lg font-serif italic text-brand-navy/60 mb-8">
-                                        Beautiful typography, refined components, and seamless motion.
+                                    <p className="text-lg font-serif italic text-brand-navy/60 mb-10 leading-relaxed">
+                                        Minimalist design. Maximum performance. Engineered to turn interest into revenue.
                                     </p>
-                                    <div className="flex gap-4">
-                                        <div className="h-12 w-32 rounded-full bg-brand-gold shadow-btn" />
-                                        <div className="h-12 w-32 rounded-full border-2 border-brand-navy/10" />
+
+                                    <div className="flex items-center gap-8">
+                                        <div className="h-14 w-40 rounded-full bg-brand-gold shadow-btn flex items-center justify-center text-white font-bold text-sm">Start Project</div>
+                                        <div className="flex items-center gap-2 font-bold text-brand-navy/40 text-sm">
+                                            View Portfolio <ArrowRight className="w-4 h-4" />
+                                        </div>
                                     </div>
 
-                                    <div className="absolute -right-20 top-20 card-outseta p-4 flex items-center gap-4 rotate-3">
-                                        <div className="h-10 w-10 bg-brand-sky/50 rounded-full flex items-center justify-center text-brand-blue">
-                                            <TrendingUp className="w-5 h-5" />
+                                    {/* Success Badge */}
+                                    <div className="absolute -right-24 top-10 card-outseta p-5 flex items-center gap-4 rotate-3 bg-white scale-110">
+                                        <div className="h-12 w-12 bg-brand-sky/50 rounded-full flex items-center justify-center text-brand-blue">
+                                            <TrendingUp className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <div className="text-xs uppercase font-bold text-brand-navy/40 tracking-wider">Conversion</div>
-                                            <div className="text-xl font-extrabold text-brand-navy">+314%</div>
+                                            <div className="text-[10px] uppercase font-bold text-brand-navy/40 tracking-widest">Enquiries</div>
+                                            <div className="text-2xl font-extrabold text-brand-navy">+314%</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* BEFORE — Generic */}
+                        {/* BEFORE — Generic / Bad */}
                         <div
                             className="absolute inset-y-0 left-0 w-full overflow-hidden bg-white border-r border-brand-sand"
                             style={{ width: `${position}%` }}
                         >
-                            <div className="absolute inset-0 w-full h-full min-w-[300px] flex flex-col bg-gray-50 p-8 sm:p-12 lg:p-16 saturate-50">
-                                <nav className="flex justify-between items-center mb-12">
-                                    <span className="font-serif text-xl tracking-widest text-gray-800">COMPANY</span>
+                            <div className="absolute inset-0 w-full h-full min-w-[300px] flex flex-col bg-[#e5e7eb] p-8 sm:p-12 lg:p-16 font-serif">
+                                <nav className="flex justify-between items-center mb-12 border-b border-gray-300 pb-4">
+                                    <span className="font-bold text-2xl text-blue-800 tracking-normal uppercase">Business Template #42</span>
                                     <div className="flex gap-6 items-center">
-                                        <span className="text-sm font-medium text-gray-400">Home</span>
-                                        <span className="text-sm font-medium text-gray-400">About</span>
-                                        <div className="px-4 py-2 rounded bg-gray-800 text-white text-sm">Contact</div>
+                                        <span className="text-sm font-medium text-gray-600 underline">Services</span>
+                                        <span className="text-sm font-medium text-gray-600 underline">About Us</span>
+                                        <div className="px-4 py-2 bg-[#ff0000] text-white text-xs font-bold">CONTACT NOW!!</div>
                                     </div>
                                 </nav>
 
                                 <div className="max-w-xl mt-10">
-                                    <h3 className="text-3xl font-sans font-bold text-gray-800 mb-4">
-                                        We provide business solutions
+                                    <h3 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                                        We are the best business solutions company in the area
                                     </h3>
-                                    <p className="text-base text-gray-500 mb-8 leading-relaxed">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    <p className="text-base text-gray-600 mb-8 leading-relaxed font-sans">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                                     </p>
-                                    <div className="px-6 py-3 bg-blue-600 text-white w-fit text-sm font-medium">
-                                        Learn More
+                                    <div className="px-8 py-3 bg-[#0000ff] text-white w-fit text-sm font-bold shadow-lg">
+                                        LEARN MORE
                                     </div>
 
-                                    <div className="mt-12 bg-white p-4 border border-gray-200 flex items-center gap-4">
-                                        <AlertTriangle className="w-8 h-8 text-red-500" />
+                                    <div className="mt-12 bg-white p-6 border-4 border-red-500 flex items-center gap-6 shadow-xl">
+                                        <AlertTriangle className="w-10 h-10 text-red-600 animate-pulse" />
                                         <div>
-                                            <div className="text-sm font-semibold text-gray-900">High Bounce Rate</div>
-                                            <div className="text-xs text-gray-500">Users leave within 3 seconds</div>
+                                            <div className="text-lg font-bold text-red-700">CRITICAL ERROR: High Bounce Rate</div>
+                                            <div className="text-sm text-gray-500 font-sans">Users are leaving your site because it looks dated.</div>
                                         </div>
                                     </div>
                                 </div>
